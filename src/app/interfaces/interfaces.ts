@@ -16,3 +16,8 @@ export interface Materias {
   nombre: string;
   seleccionada: boolean;
 }
+
+export interface Ubicacion {
+  latitud: number;
+  longitud: number;
+}

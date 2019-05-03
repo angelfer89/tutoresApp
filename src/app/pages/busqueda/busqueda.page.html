@@ -8,6 +8,13 @@
 </ion-header>
 
 <ion-content padding>
+
+  <ion-label> Distancia en metros: </ion-label>
+
+  <ion-range min="0" max="200" color="primary" pin="true" step="10" [(ngModel)]="distancia">
+      <ion-label slot="start">{{ distancia }}</ion-label>
+    </ion-range>
+
   <ion-list>
     <ion-radio-group>
       <ion-item *ngFor="let materia of materias">

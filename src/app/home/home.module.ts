@@ -6,7 +6,15 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
+import { AgmCoreModule } from '@agm/core';
+import { ComponentsModule } from '../components/components.module';
+import { InfoComponent } from '../components/info/info.component';
+
+
 @NgModule({
+  entryComponents:[
+    InfoComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -16,7 +24,11 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA8uQtNNni6u2VGY3UwWJ3e5fUu6Qf7H-s'
+    }),
+    ComponentsModule
   ],
   declarations: [HomePage]
 })

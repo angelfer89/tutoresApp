@@ -9,6 +9,7 @@ import { Materias } from 'src/app/interfaces/interfaces';
 export class BusquedaPage implements OnInit {
 
   materias: Materias[];
+  distancia = 0;
 
   constructor() { 
     this.materias = [
@@ -39,11 +40,12 @@ export class BusquedaPage implements OnInit {
   }
 
   realizarBusqueda(){
+    
     const materia = this.materias.filter(item => {
       return item.seleccionada == true;
     });
-
     console.log(materia);
+    console.log(this.distancia);
   }
 
 }
