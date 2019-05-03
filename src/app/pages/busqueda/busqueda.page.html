@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Realizar búsqueda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-radio-group>
+      <ion-item *ngFor="let materia of materias">
+        <ion-label> {{ materia.nombre }} </ion-label>
+        <ion-radio slot="start"> </ion-radio>
+      </ion-item>      
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-button color="primary" expand="full" (click)=realizarBusqueda()> Buscar </ion-button>
+
+</ion-content>
