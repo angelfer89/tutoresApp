@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Materias } from 'src/app/interfaces/interfaces';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-busqueda',
@@ -11,7 +12,7 @@ export class BusquedaPage implements OnInit {
   materias: Materias[];
   distancia = 0;
 
-  constructor() { 
+  constructor(private modalController: ModalController) { 
     this.materias = [
       {
         nombre: 'Matemáticas',
@@ -40,12 +41,22 @@ export class BusquedaPage implements OnInit {
   }
 
   realizarBusqueda(){
-    
+
     const materia = this.materias.filter(item => {
       return item.seleccionada == true;
     });
-    console.log(materia);
-    console.log(this.distancia);
+
+    this.modalController.dismiss({
+      distancia: this.distancia,
+      materia: materia[0].nombre
+    });
+
   }
+
+  cancelarModal(){
+    this.modalController.dismiss();
+  }
+
+
 
 }

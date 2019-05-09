@@ -1,11 +1,15 @@
 <ion-content>
 
   <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker *ngFor="let tutor of tutores" [latitude]="tutor.latitud" [longitude]="tutor.longitud" (markerClick)="mostrarInfo()"></agm-marker>
+      <agm-marker *ngFor="let tutor of tutores" [latitude]="tutor.latitud" 
+      [longitude]="tutor.longitud" 
+      (markerClick)="mostrarInfo( $event )"></agm-marker>
   </agm-map> 
 
+  <ion-button (click)="mostrarInfo( $event )"> Hola </ion-button>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary" [routerLink]="['/busqueda']">
+    <ion-fab-button color="primary" (click)="abrirBusqueda()">
       <ion-icon name="search"></ion-icon>
     </ion-fab-button>
   </ion-fab>

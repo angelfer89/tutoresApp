@@ -9,11 +9,13 @@ import { HomePage } from './home.page';
 import { AgmCoreModule } from '@agm/core';
 import { ComponentsModule } from '../components/components.module';
 import { InfoComponent } from '../components/info/info.component';
-
+import { BusquedaPage } from '../pages/busqueda/busqueda.page';
+import { BusquedaPageModule } from '../pages/busqueda/busqueda.module';
 
 @NgModule({
-  entryComponents:[
-    InfoComponent
+  entryComponents: [
+    InfoComponent,
+    BusquedaPage
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { InfoComponent } from '../components/info/info.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA8uQtNNni6u2VGY3UwWJ3e5fUu6Qf7H-s'
     }),
-    ComponentsModule
+    ComponentsModule,
+    BusquedaPageModule
   ],
   declarations: [HomePage]
 })
