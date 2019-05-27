@@ -12,9 +12,9 @@ export interface Tutor {
   distance: string;
 }
 
-export interface Materias {
+export interface Materia {
+  id: number,
   nombre: string;
-  seleccionada: boolean;
 }
 
 export interface Ubicacion {

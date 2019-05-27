@@ -9,8 +9,8 @@ export class TutorService {
 
   constructor( private http: HttpClient) { }
 
-  obtenerTutores(lat: number, lng: number)
-  {
-    return this.http.get<RespGetTutores>('http://localhost/tutores/index.php/TutorService/ObtenerTutores/' + lat + '/' + lng);
+  obtenerTutores(lat: number, lng: number, distance: number, materiaID: number) {
+// tslint:disable-next-line: max-line-length
+    return this.http.get<RespGetTutores>('http://localhost/tutores/index.php/TutorService/ObtenerTutores/' + lat + '/' + lng + '/' + distance + '/' + materiaID);
   }
 }

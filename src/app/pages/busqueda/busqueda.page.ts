@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Materias } from 'src/app/interfaces/interfaces';
+import { Materia } from 'src/app/interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -9,54 +9,52 @@ import { ModalController } from '@ionic/angular';
 })
 export class BusquedaPage implements OnInit {
 
-  materias: Materias[];
+  materias: Materia[];
   distancia = 0;
+  materiaSeleccionada: Materia;
 
-  constructor(private modalController: ModalController) { 
+  constructor(private modalController: ModalController) {
     this.materias = [
       {
-        nombre: 'Matemáticas',
-        seleccionada: false
-      }, 
-      {
-        nombre: 'Física',
-        seleccionada: true
+        id: 1,
+        nombre: 'Matemáticas'
       },
       {
-        nombre: 'Química',
-        seleccionada: false
+        id: 2,
+        nombre: 'Física'
       },
       {
-        nombre: 'Inglés',
-        seleccionada: false
+        id: 3,
+        nombre: 'Química'
       },
       {
-        nombre: 'Programación',
-        seleccionada: false
+        id: 4,
+        nombre: 'Inglés'
+      },
+      {
+        id: 5,
+        nombre: 'Programación'
       }
     ];
+
+    this.materiaSeleccionada = this.materias[0];
   }
 
   ngOnInit() {
   }
 
-  realizarBusqueda(){
-
-    const materia = this.materias.filter(item => {
-      return item.seleccionada == true;
-    });
-
+  realizarBusqueda() {
     this.modalController.dismiss({
-      distancia: this.distancia,
-      materia: materia[0].nombre
+      distancia: this.distancia / 1000, // Pasa de kilometros a metros
+      materiaID: this.materiaSeleccionada.id
     });
-
   }
 
-  cancelarModal(){
+  seleccionado(materia: Materia) {
+    this.materiaSeleccionada = materia;
+  }
+
+  cancelarModal() {
     this.modalController.dismiss();
   }
-
-
-
 }

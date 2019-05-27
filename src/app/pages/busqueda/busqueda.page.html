@@ -11,7 +11,7 @@
 
   <ion-label> Distancia en metros: </ion-label>
 
-  <ion-range min="0" max="200" color="primary" pin="true" step="10" [(ngModel)]="distancia">
+  <ion-range min="0" max="1000" color="primary" pin="true" step="100" [(ngModel)]="distancia">
       <ion-label slot="start">{{ distancia }}</ion-label>
     </ion-range>
 
@@ -19,7 +19,7 @@
     <ion-radio-group>
       <ion-item *ngFor="let materia of materias">
         <ion-label> {{ materia.nombre }} </ion-label>
-        <ion-radio slot="start"> </ion-radio>
+          <ion-radio slot="start" (ionSelect)=seleccionado(materia) [checked]="true"> </ion-radio>     
       </ion-item>      
     </ion-radio-group>
   </ion-list>

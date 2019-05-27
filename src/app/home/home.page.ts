@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { TutorService } from '../services/tutor/tutor.service';
 
 import { Tutor } from '../interfaces/interfaces';
-import { PopoverController, ModalController, AlertController } from '@ionic/angular';
-import { InfoComponent } from '../components/info/info.component';
+import { ModalController, AlertController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { BusquedaPage } from '../pages/busqueda/busqueda.page';
 
@@ -21,7 +20,6 @@ export class HomePage {
 
 
   constructor( private tutorService: TutorService,
-               private popoverController: PopoverController,
                private modalController: ModalController,
                private alertController: AlertController,
                private geolocation: Geolocation) {
@@ -36,7 +34,9 @@ export class HomePage {
     });
   }
 
-  buscarTutores(distance: number, materia: string){
+  buscarTutores(distance: number, materiaID: number) {
+    this.tutores = []; // Limpia el resultado anterior
+
     this.geolocation.getCurrentPosition().then((resp) => {
 
       this.lat = resp.coords.latitude;
@@ -46,13 +46,12 @@ export class HomePage {
       this.lat = 4.6665578;
       this.lng = -74.0524521;
 
-      this.tutorService.obtenerTutores(this.lat, this.lng)
+      this.tutorService.obtenerTutores(this.lat, this.lng, distance, materiaID)
                       .subscribe( resp => {
                         console.log('Tutores', resp.tutores);
-                        if(resp.tutores.length == 0){
+                        if (resp.tutores.length === 0) {
                           this.mostrarAlert();
-                        }
-                        else{
+                        } else {
                           this.tutores = resp.tutores;
                         }
       });
@@ -62,24 +61,18 @@ export class HomePage {
     });
   }
 
-  async abrirBusqueda(){
+  async abrirBusqueda() {
     const modal = await this.modalController.create({
       component: BusquedaPage
     });
     await modal.present();
 
-    //Recibe los valores de la pagina del modal
+    // Recibe los valores de la pagina del modal
     const { data } = await modal.onDidDismiss();
 
-    this.buscarTutores(data['distancia'], data['materia'])
-  }
-
-  async mostrarInfo(event: any){
-    const popover = await this.popoverController.create({
-      component: InfoComponent,
-      event: event
-    });
-    await popover.present();
+    if (data !== undefined) {
+      this.buscarTutores(data['distancia'], data['materiaID']);
+    }
   }
 
   async mostrarAlert() {

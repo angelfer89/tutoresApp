@@ -83,6 +83,8 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
-        <string>We use your location for full functionality of certain app features.</string>
+     <string>We use your location for full functionality of certain app features.</string>
     </edit-config>
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyA8uQtNNni6u2VGY3UwWJ3e5fUu6Qf7H-s" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyA8uQtNNni6u2VGY3UwWJ3e5fUu6Qf7H-s" />
 </widget>
