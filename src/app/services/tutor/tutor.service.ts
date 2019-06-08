@@ -11,6 +11,7 @@ export class TutorService {
 
   obtenerTutores(lat: number, lng: number, distance: number, materiaID: number) {
 // tslint:disable-next-line: max-line-length
-    return this.http.get<RespGetTutores>('http://localhost/tutores/index.php/TutorService/ObtenerTutores/' + lat + '/' + lng + '/' + distance + '/' + materiaID);
+    //return this.http.get<RespGetTutores>('http://localhost/tutores/index.php/TutorService/ObtenerTutores/' + lat + '/' + lng + '/' + distance + '/' + materiaID);
+    return this.http.get<RespGetTutores>('http://localhost/tutores/index.php/TutorService/ObtenerTutores');
   }
 }

@@ -1,0 +1,27 @@
+Tutores:
+
+- IDTutor
+- Nombre            : Nombre del tutor
+- Dirección         : Es la Dirección que el tutor quiere que se vea
+- Correo            : Correo del tutor
+- Teléfono          : Telefono del tutor
+- Longitud          : La latitud de la ubicación, se obtendrà del link de la ubicación
+- Latitud           : La longitud de la ubicación, se obtendrà del link de la ubicación
+- Link              : Link de la ubicación
+- Comentarios       : Aqui se obtendràn las materias que el tutuor quiera asesorar
+- FechaRegistro     : Fecha en la que el tutor se registró
+- FechaUltimoPago   : Fecha del último pago del tutor
+- FechaProximoPago  : Fecha del siguiente pago del tutor
+- Procesado         : Indica si el tutor ya estan sus coordenadas y materias a dar correctamente
+- Activo            : Indica si el tutor està acitvo para ser visualizado, si realizó su pago
+
+Materias:
+
+- IDMateria
+- Materia
+
+TutoresMaterias:
+
+- IDTutor
+- IDMateria
+
