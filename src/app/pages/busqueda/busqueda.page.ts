@@ -43,6 +43,7 @@ export class BusquedaPage implements OnInit {
   ngOnInit() {
   }
 
+  // Cierra el modal y envia los parametros a la pagina de home
   realizarBusqueda() {
     this.modalController.dismiss({
       distancia: this.distancia / 1000, // Pasa de kilometros a metros
@@ -54,6 +55,7 @@ export class BusquedaPage implements OnInit {
     this.materiaSeleccionada = materia;
   }
 
+  // Cierra el modal sin enviar parametros
   cancelarModal() {
     this.modalController.dismiss();
   }

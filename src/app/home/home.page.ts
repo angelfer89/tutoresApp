@@ -34,7 +34,7 @@ export class HomePage {
     });
   }
 
-  buscarTutores(distance: number, materiaID: number) {
+  /*buscarTutores(distance: number, materiaID: number) {
     this.tutores = []; // Limpia el resultado anterior
 
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -59,7 +59,32 @@ export class HomePage {
       }).catch((error) => {
         console.log('Error getting location', error);
     });
+  }*/
+
+  buscarTutores(distance: number, materiaID: number) {
+    this.tutores = []; // Limpia el resultado anterior
+
+    // Valores de prueba
+    this.lat = 4.6665578;
+    this.lng = -74.0524521;
+
+    this.tutorService.obtenerTutores(this.lat, this.lng, distance, materiaID)
+                    .subscribe( resp => {
+                      console.log('Tutores', resp);
+                      if(resp.error == true){
+                        this.mostrarAlert(2);
+                      }
+                      else{
+                        console.log('Tutores', resp.tutores);
+                        if (resp.tutores.length === 0) {
+                          this.mostrarAlert(1);
+                        } else {
+                          this.tutores = resp.tutores;
+                        }
+                      }
+      });
   }
+
 
   async abrirBusqueda() {
     const modal = await this.modalController.create({
@@ -75,14 +100,27 @@ export class HomePage {
     }
   }
 
-  async mostrarAlert() {
-    const alert = await this.alertController.create({
-      header: 'Sin información',
-      message: 'No hay tutores cerca de su localización, pruebe aumentando el rango en metros o esperemos a que tutores se registren',
-      buttons: ['OK']
-    });
+  async mostrarAlert(numAlerta) {
 
-    await alert.present();
+    if(numAlerta == 1){
+      const alert = await this.alertController.create({
+        header: 'Sin información',
+        message: 'No hay tutores cerca de su localización, pruebe aumentando el rango en metros o esperemos a que tutores se registren',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
+    
+    if(numAlerta == 2){
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'Ocurrió un error inesperado, intentar más tarde',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
+
+    
   }
 
 }
