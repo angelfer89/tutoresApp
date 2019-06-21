@@ -13,8 +13,9 @@ export interface Tutor {
 }
 
 export interface Materia {
-  id: number,
+  idMateria: number;
   nombre: string;
+  checked: boolean;
 }
 
 export interface Ubicacion {

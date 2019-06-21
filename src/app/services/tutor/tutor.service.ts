@@ -15,6 +15,6 @@ export class TutorService {
       'X-API-KEY' : '12345'
     });
 // tslint:disable-next-line: max-line-length
-    return this.http.get<RespGetTutores>('http://localhost:8080/tutores/index.php/TutorService/ObtenerTutores/' + materiaID + '/' + distance + '/' + lat + '/' + lng, { headers : headers});
+    return this.http.get<RespGetTutores>('http://localhost:8080/tutores/index.php/TutorService/ObtenerTutores/' + materiaID + '/' + distance + '/' + lat + '/' + lng, { headers });
   }
 }
