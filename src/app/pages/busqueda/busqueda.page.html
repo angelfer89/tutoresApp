@@ -8,22 +8,32 @@
 </ion-header>
 
 <ion-content padding>
-
-  <ion-label> Distancia en metros: </ion-label>
-
-  <ion-range min="0" max="1000" color="primary" pin="true" step="100" [(ngModel)]="distancia">
-      <ion-label slot="start">{{ distancia }}</ion-label>
-    </ion-range>
-
+  
   <ion-list>
+
+    <ion-label> Distancia en metros: </ion-label>
+
+    <ion-range min="100" max="{{ maxDistancia }}" color="primary" pin="true" step="100" [(ngModel)]="distancia">
+        <ion-label slot="start">{{ distancia }}</ion-label>
+      </ion-range>
+      
+    <ion-item>
+        <ion-label>Nivel</ion-label>
+        <ion-select placeholder="Seleccionar" (ionChange)=nivelSeleccionado($event)>
+          <ion-select-option *ngFor="let nivel of niveles" value="{{ nivel.nivel }}">{{ nivel.nivel }} </ion-select-option>
+        </ion-select>
+    </ion-item>
     <ion-radio-group>
       <ion-item *ngFor="let materia of materias">
-        <ion-label> {{ materia.nombre }} </ion-label>
-          <ion-radio slot="start" (ionSelect)=seleccionado(materia) [checked]="true"> </ion-radio>     
+        <ion-label> {{ materia.nombreMateria }} </ion-label>
+          <ion-radio slot="start" (ionSelect)=seleccionado(materia) [checked]="false"> </ion-radio>     
       </ion-item>      
     </ion-radio-group>
+
+    <ion-button color="primary" expand="full" (click)=realizarBusqueda() disabled="{{ !iniciarBusqueda }}"> Buscar </ion-button>
+
   </ion-list>
 
-  <ion-button color="primary" expand="full" (click)=realizarBusqueda()> Buscar </ion-button>
+  
 
 </ion-content>
