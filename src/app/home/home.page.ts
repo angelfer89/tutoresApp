@@ -18,7 +18,6 @@ export class HomePage {
   lng: number;
   tutores: Tutor[];
 
-
   constructor( private tutorService: TutorService,
                private modalController: ModalController,
                private alertController: AlertController,
@@ -26,8 +25,11 @@ export class HomePage {
 
       this.geolocation.getCurrentPosition().then((resp) => {
 
-      this.lat = resp.coords.latitude;
-      this.lng = resp.coords.longitude;
+      this.lat =  4.6665578;
+      this.lng = -74.0524521;
+      
+      //this.lat = resp.coords.latitude;
+      //this.lng = resp.coords.longitude;
 
       }).catch((error) => {
         console.log('Error getting location', error);
@@ -85,7 +87,6 @@ export class HomePage {
       });
   }
 
-
   async abrirBusqueda() {
     const modal = await this.modalController.create({
       component: BusquedaPage
@@ -101,7 +102,6 @@ export class HomePage {
   }
 
   async mostrarAlert(numAlerta) {
-
     if(numAlerta == 1){
       const alert = await this.alertController.create({
         header: 'Sin información',
@@ -119,8 +119,6 @@ export class HomePage {
       });
       await alert.present();
     }
-
-    
   }
 
 }

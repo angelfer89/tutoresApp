@@ -1,3 +1,11 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <img src="assets\icon\Imagen.png" width="40px" style="display:inline-block" height="40px"/>
+
+      <ion-title class="titleicon" style="display:inline-block" >Thuton</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
 
   <agm-map [latitude]="lat" [longitude]="lng" [zoomControl]="false" [minZoom]=12 [maxZoom]=20>
@@ -12,7 +20,7 @@
   </agm-map> 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary" (click)="abrirBusqueda()">
+    <ion-fab-button color="secondary" (click)="abrirBusqueda()">
       <ion-icon name="search"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -24,7 +24,7 @@ export class BusquedaPage implements OnInit {
       this.niveles = resp.niveles;
     });
 
-    this,tutorService.obtenerMaterias().subscribe( resp => {
+    this.tutorService.obtenerMaterias().subscribe( resp => {
       this.materiasServicio = resp.materias;
     });
 

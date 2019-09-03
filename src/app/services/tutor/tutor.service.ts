@@ -5,10 +5,9 @@ import { RespGetTutores, RespGetMaterias, RespGetNiveles, RespGetDistancia } fro
 @Injectable({
   providedIn: 'root'
 })
-export class TutorService {z
+export class TutorService {
 
-  constructor( private http: HttpClient) { 
-    
+  constructor( private http: HttpClient) {
   }
 
   obtenerTutores(lat: number, lng: number, distance: number, materiaID: number) {
@@ -17,7 +16,7 @@ export class TutorService {z
       'X-API-KEY' : '12345'
     });
 // tslint:disable-next-line: max-line-length
-    return this.http.get<RespGetTutores>('http://localhost:8080/tutores/index.php/TutorService/ObtenerTutores/' + materiaID + '/' + distance + '/' + lat + '/' + lng, { headers });
+    return this.http.get<RespGetTutores>('http://localhost/tutores/index.php/TutorService/ObtenerTutores/' + materiaID + '/' + distance + '/' + lat + '/' + lng, { headers });
   }
 
   obtenerNiveles(){
@@ -25,7 +24,7 @@ export class TutorService {z
       'X-API-KEY' : '12345'
     });
 // tslint:disable-next-line: max-line-length
-    return this.http.get<RespGetNiveles>('http://localhost:8080/tutores/index.php/TutorService/ObtenerNiveles/', { headers });
+    return this.http.get<RespGetNiveles>('http://localhost/tutores/index.php/TutorService/ObtenerNiveles/', { headers });
   }
 
   obtenerMaterias(){
@@ -33,7 +32,7 @@ export class TutorService {z
       'X-API-KEY' : '12345'
     });
 
-    return this.http.get<RespGetMaterias>('http://localhost:8080/tutores/index.php/TutorService/ObtenerMaterias/', { headers });
+    return this.http.get<RespGetMaterias>('http://localhost/tutores/index.php/TutorService/ObtenerMaterias/', { headers });
   }
 
   obtenerDistanciaMaxima(){
@@ -41,7 +40,7 @@ export class TutorService {z
       'X-API-KEY' : '12345'
     });
 
-    return this.http.get<RespGetDistancia>('http://localhost:8080/tutores/index.php/TutorService/ObtenerDistanciaMaxima/', { headers });
+    return this.http.get<RespGetDistancia>('http://localhost/tutores/index.php/TutorService/ObtenerDistanciaMaxima/', { headers });
   }
 
 }

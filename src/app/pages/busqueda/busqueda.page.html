@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-        <ion-button color="primary" (click)="cancelarModal()">Cancelar</ion-button>
+        <ion-button color="secondary" (click)="cancelarModal()"><ion-icon name="md-arrow-round-back"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title>Realizar búsqueda</ion-title>
   </ion-toolbar>
@@ -29,11 +29,10 @@
           <ion-radio slot="start" (ionSelect)=seleccionado(materia) [checked]="false"> </ion-radio>     
       </ion-item>      
     </ion-radio-group>
-
-    <ion-button color="primary" expand="full" (click)=realizarBusqueda() disabled="{{ !iniciarBusqueda }}"> Buscar </ion-button>
-
   </ion-list>
 
-  
-
 </ion-content>
+
+<ion-footer class="ion-padding" no-border>
+  <ion-button color="secondary" expand="full" (click)=realizarBusqueda() disabled="{{ !iniciarBusqueda }}"> Buscar </ion-button>  
+</ion-footer>
