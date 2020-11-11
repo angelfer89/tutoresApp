@@ -7,14 +7,13 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 
 import { AgmCoreModule } from '@agm/core';
-import { ComponentsModule } from '../components/components.module';
-import { InfoComponent } from '../components/info/info.component';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+
 import { BusquedaPage } from '../pages/busqueda/busqueda.page';
 import { BusquedaPageModule } from '../pages/busqueda/busqueda.module';
 
 @NgModule({
   entryComponents: [
-    InfoComponent,
     BusquedaPage
   ],
   imports: [
@@ -30,7 +29,7 @@ import { BusquedaPageModule } from '../pages/busqueda/busqueda.module';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA8uQtNNni6u2VGY3UwWJ3e5fUu6Qf7H-s'
     }),
-    ComponentsModule,
+    AgmJsMarkerClustererModule,
     BusquedaPageModule
   ],
   declarations: [HomePage]

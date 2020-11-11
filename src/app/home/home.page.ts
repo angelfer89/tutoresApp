@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { TutorService } from '../services/tutor/tutor.service';
 
 import { Tutor } from '../interfaces/interfaces';
@@ -12,7 +12,7 @@ import { BusquedaPage } from '../pages/busqueda/busqueda.page';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage{
 
   lat: number;
   lng: number;
@@ -23,56 +23,31 @@ export class HomePage {
                private alertController: AlertController,
                private geolocation: Geolocation) {
 
-      this.geolocation.getCurrentPosition().then((resp) => {
+    this.obtenerGeolocalizacion();
 
-      this.lat =  4.6665578;
-      this.lng = -74.0524521;
-      
-      //this.lat = resp.coords.latitude;
-      //this.lng = resp.coords.longitude;
-
-      }).catch((error) => {
-        console.log('Error getting location', error);
-    });
   }
 
-  /*buscarTutores(distance: number, materiaID: number) {
-    this.tutores = []; // Limpia el resultado anterior
+  obtenerGeolocalizacion(){
+
+    // Se reinician los valores
+    this.lat = null;
+    this.lng = null;
 
     this.geolocation.getCurrentPosition().then((resp) => {
 
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
 
-      // Valores de prueba
-      this.lat = 4.6665578;
-      this.lng = -74.0524521;
-
-      this.tutorService.obtenerTutores(this.lat, this.lng, distance, materiaID)
-                      .subscribe( resp => {
-                        console.log('Tutores', resp.tutores);
-                        if (resp.tutores.length === 0) {
-                          this.mostrarAlert();
-                        } else {
-                          this.tutores = resp.tutores;
-                        }
-      });
-
       }).catch((error) => {
         console.log('Error getting location', error);
     });
-  }*/
+  }
 
   buscarTutores(distance: number, materiaID: number) {
     this.tutores = []; // Limpia el resultado anterior
 
-    // Valores de prueba
-    this.lat = 4.6665578;
-    this.lng = -74.0524521;
-
     this.tutorService.obtenerTutores(this.lat, this.lng, distance, materiaID)
                     .subscribe( resp => {
-                      console.log('Tutores', resp);
                       if(resp.error == true){
                         this.mostrarAlert(2);
                       }
@@ -82,6 +57,8 @@ export class HomePage {
                           this.mostrarAlert(1);
                         } else {
                           this.tutores = resp.tutores;
+                          this.obtenerGeolocalizacion();
+                          console.log('Tutores', this.tutores);
                         }
                       }
       });

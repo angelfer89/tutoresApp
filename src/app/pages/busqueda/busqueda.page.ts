@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Materia, Nivel, Distancia } from 'src/app/interfaces/interfaces';
+import { Component } from '@angular/core';
+import { Materia, Nivel } from 'src/app/interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { TutorService } from '../../services/tutor/tutor.service';
 
@@ -8,10 +8,10 @@ import { TutorService } from '../../services/tutor/tutor.service';
   templateUrl: './busqueda.page.html',
   styleUrls: ['./busqueda.page.scss'],
 })
-export class BusquedaPage implements OnInit {
+export class BusquedaPage {
 
   materias: Materia[];
-  distancia = 100;
+  distancia = 1;
   materiaSeleccionada: Materia;
   niveles: Nivel[];
   materiasServicio: Materia[];
@@ -33,13 +33,10 @@ export class BusquedaPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   // Cierra el modal y envia los parametros a la pagina de home
   realizarBusqueda() {
     this.modalController.dismiss({
-      distancia: this.distancia / 1000, // Pasa de metros a kilometros
+      distancia: this.distancia,
       materiaID: this.materiaSeleccionada.idMateria
     });
   }
