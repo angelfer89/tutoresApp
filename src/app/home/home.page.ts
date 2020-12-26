@@ -6,14 +6,16 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { BusquedaPage } from '../pages/busqueda/busqueda.page';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+
 export class HomePage{
 
+  
   lat: number;
   lng: number;
   tutores: Tutor[];
@@ -24,7 +26,6 @@ export class HomePage{
                private geolocation: Geolocation) {
 
     this.obtenerGeolocalizacion();
-
   }
 
   obtenerGeolocalizacion(){
@@ -37,9 +38,12 @@ export class HomePage{
 
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
-
+      
       }).catch((error) => {
-        console.log('Error getting location', error);
+        if(error.code == 1) // Si el usuario no permitio acceder a la ubicación
+          this.mostrarAlert(3);
+          else
+            this.mostrarAlert(4); // Cualquier otro error
     });
   }
 
@@ -52,13 +56,11 @@ export class HomePage{
                         this.mostrarAlert(2);
                       }
                       else{
-                        console.log('Tutores', resp.tutores);
                         if (resp.tutores.length === 0) {
                           this.mostrarAlert(1);
                         } else {
                           this.tutores = resp.tutores;
                           this.obtenerGeolocalizacion();
-                          console.log('Tutores', this.tutores);
                         }
                       }
       });
@@ -92,6 +94,24 @@ export class HomePage{
       const alert = await this.alertController.create({
         header: 'Error',
         message: 'Ocurrió un error inesperado, intentar más tarde',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
+
+    if(numAlerta == 3){
+      const alert = await this.alertController.create({
+        header: 'Info',
+        message: 'Por favor, permite que Thuton acceda a la ubicacion de este dispositivo',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
+
+    if(numAlerta == 4){
+      const alert = await this.alertController.create({
+        header: 'Info',
+        message: 'Por el momento Thuton no puede obtener la ubicacion de este dispositivo, verifica tu conexión',
         buttons: ['OK']
       });
       await alert.present();

@@ -13,34 +13,34 @@ export class TutorService {
   obtenerTutores(lat: number, lng: number, distance: number, materiaID: number) {
 
     const headers = new HttpHeaders({
-      'X-API-KEY' : '12345'
+      'THUTON-API-KEY' : 'APPTHUTON2020'
     });
 // tslint:disable-next-line: max-line-length
-    return this.http.get<RespGetTutores>('http://localhost/tutores/index.php/TutorService/ObtenerTutores/' + materiaID + '/' + distance + '/' + lat + '/' + lng, { headers });
+    return this.http.get<RespGetTutores>('http://api.thuton.com/index.php/TutorService/ObtenerTutores/' + materiaID + '/' + distance + '/' + lat + '/' + lng, { headers });
   }
 
   obtenerNiveles(){
     const headers = new HttpHeaders({
-      'X-API-KEY' : '12345'
+      'THUTON-API-KEY' : 'APPTHUTON2020'
     });
 // tslint:disable-next-line: max-line-length
-    return this.http.get<RespGetNiveles>('http://localhost/tutores/index.php/TutorService/ObtenerNiveles/', { headers });
+    return this.http.get<RespGetNiveles>('http://api.thuton.com/index.php/TutorService/ObtenerNiveles/', { headers });
   }
 
   obtenerMaterias(){
     const headers = new HttpHeaders({
-      'X-API-KEY' : '12345'
+      'THUTON-API-KEY' : 'APPTHUTON2020'
     });
 
-    return this.http.get<RespGetMaterias>('http://localhost/tutores/index.php/TutorService/ObtenerMaterias/', { headers });
+    return this.http.get<RespGetMaterias>('http://api.thuton.com/index.php/TutorService/ObtenerMaterias/', { headers });
   }
 
   obtenerDistanciaMaxima(){
     const headers = new HttpHeaders({
-      'X-API-KEY' : '12345'
+      'THUTON-API-KEY' : 'APPTHUTON2020'
     });
 
-    return this.http.get<RespGetDistancia>('http://localhost/tutores/index.php/TutorService/ObtenerDistanciaMaxima/', { headers });
+    return this.http.get<RespGetDistancia>('http://api.thuton.com/index.php/TutorService/ObtenerDistanciaMaxima/', { headers });
   }
 
 }
