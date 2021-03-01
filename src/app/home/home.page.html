@@ -17,8 +17,8 @@
     
       <agm-info-window>
         <strong>{{ tutor.nombre }}</strong>
-        <p> {{ tutor.telefono }}</p>
-        <p> {{ tutor.correo }} </p>
+        <p> <a href="{{'https://wa.me/'+ tutor.telefono }}"> {{ tutor.telefono }} </a></p>
+        <p> <a href="{{'mailto:' + tutor.correo + '?Subject=Asesoria'}}"> {{ tutor.correo }} </a></p>
         <p> {{ tutor.direccion }} </p>
       </agm-info-window>
 

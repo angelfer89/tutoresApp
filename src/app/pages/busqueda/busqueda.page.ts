@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Materia, Nivel } from 'src/app/interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { TutorService } from '../../services/tutor/tutor.service';
@@ -8,7 +8,7 @@ import { TutorService } from '../../services/tutor/tutor.service';
   templateUrl: './busqueda.page.html',
   styleUrls: ['./busqueda.page.scss'],
 })
-export class BusquedaPage {
+export class BusquedaPage implements OnInit {
 
   materias: Materia[];
   distancia = 1;
@@ -19,6 +19,10 @@ export class BusquedaPage {
   maxDistancia: number;
 
   constructor(private modalController: ModalController, private tutorService: TutorService) {
+  
+  }
+
+  ngOnInit(){
 
     this.tutorService.obtenerNiveles().subscribe( resp => {
       this.niveles = resp.niveles;

@@ -5,6 +5,9 @@
     <author email="angel.salgado.ponce@gmail.com" href="http://www.thuton.com/">Thuton</author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="*" />
+    <access launch-external="yes" origin="whatsapp://*" />
+    <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -20,6 +23,11 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+            <application android:networkSecurityConfig="@xml/network_security_config" />
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
@@ -228,4 +236,5 @@
     </edit-config>
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyA8uQtNNni6u2VGY3UwWJ3e5fUu6Qf7H-s" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyA8uQtNNni6u2VGY3UwWJ3e5fUu6Qf7H-s" />
+    <engine name="android" spec="9.0.0" />
 </widget>
